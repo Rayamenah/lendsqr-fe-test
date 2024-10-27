@@ -1,116 +1,154 @@
 .container {
-  padding-left: 30px;
-  z-index: 5;
   width: 283px;
-  //   height: 1574px;
-  height: 100vh;
-  overflow-y: scroll;
-  overflow-x: hidden;
+  height: 1574px;
   box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.1);
-}
-.logo {
-  padding-top: 35px;
-  width: 253px;
-  height: 100px;
 
-  img {
-    width: 144.8px;
-    height: 30px;
-  }
-}
-
-.switch-org {
-  margin-top: 39px;
-  display: flex;
-  align-items: center;
-
-  img:nth-child(1) {
-    width: 16px;
-    height: 16px;
-    margin-right: 10px;
-  }
-  div {
-    width: 157px;
-    height: 19px;
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 18.77px;
-    color: #213f7d;
-    font-family: sans-serif;
-    margin-right: 23px;
+  .nav-container {
+    z-index: 5;
+    border-bottom: 1px solid #213f7d;
   }
 
-  img:nth-child(2) {
-    width: 16px;
-    height: 16px;
-  }
-}
-
-.dashboard {
-  margin-top: 52px;
-  width: 110px;
-  height: 19px;
-  display: flex;
-  align-items: center;
-
-  img {
-    width: 16px;
-    height: 14.22px;
-    margin-right: 10px;
-  }
-  div {
-    width: 84px;
-    height: 19px;
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 18.77px;
-    color: #213f7d;
-    font-family: sans-serif;
-  }
-}
-
-.nav-menu {
-  margin-top: 41px;
-  font-family: sans-serif;
-  margin-bottom: 59px;
-
-  .nav-submenu {
-    .nav {
-      display: flex;
-      height: 40px;
-      align-items: center;
-
-      &:first-child {
-        background-color: #39cdcc;
-        border-left: 3px #39cdcc;
-        height: 100px;
-      }
-    }
-
-    .nav-heading {
-      width: 75px;
-      height: 14px;
-      font-size: 12px;
-      font-weight: 500;
-      line-height: 14.08px;
-      color: #545f7d;
-      font-family: sans-serif;
-      margin-bottom: 10px;
-    }
+  .logo {
+    padding-top: 35px;
+    width: 253px;
+    height: 100px;
 
     img {
+      width: 144.8px;
+      height: 30px;
+    }
+  }
+
+  .switch-org {
+    margin-top: 39px;
+    display: flex;
+    align-items: center;
+    padding-left: 30px;
+
+    img:nth-child(1),
+    img:nth-child(2) {
       width: 16px;
-      height: 12.8px;
+      height: 16px;
+    }
+
+    img:nth-child(1) {
       margin-right: 10px;
     }
 
-    p {
-      width: fit-content;
-      height: 1px;
+    div {
+      width: 157px;
+      height: 19px;
       font-size: 16px;
       font-weight: 400;
       line-height: 18.77px;
       color: #213f7d;
+      font-family: sans-serif;
+      margin-right: 23px;
     }
+  }
+
+  .dashboard {
+    padding-left: 30px;
+    margin-top: 52px;
+    width: 110px;
+    height: 19px;
+    display: flex;
+    align-items: center;
+
+    img {
+      width: 16px;
+      height: 14.22px;
+      margin-right: 10px;
+    }
+
+    div {
+      width: 84px;
+      height: 19px;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 18.77px;
+      color: #213f7d;
+      font-family: sans-serif;
+    }
+  }
+
+  .nav-menu {
+    margin: 41px 0 59px;
+    font-family: sans-serif;
+
+    .nav-submenu {
+      .nav-heading {
+        margin: 30px 0 10px 30px;
+        width: 75px;
+        height: 14px;
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 14.08px;
+        color: #545f7d;
+        font-family: sans-serif;
+      }
+
+      .nav-title {
+        padding-left: 30px;
+        display: flex;
+        height: 40px;
+        align-items: center;
+
+        &:nth-child(2) {
+          background-color: #ebf5f5;
+          border-left: 3px solid #39cdcc;
+        }
+
+        &:not(:first-child) {
+          margin-top: 10px;
+        }
+
+        &:nth-child(7) {
+          height: 22px;
+        }
+
+        img {
+          width: 16px;
+          height: 12.8px;
+          margin-right: 10px;
+        }
+
+        p {
+          font-size: 16px;
+          font-weight: 400;
+          line-height: 18.77px;
+          color: #213f7d;
+        }
+      }
+    }
+  }
+
+  .sidebar-footer {
+    display: flex;
+    padding-top: 71px;
+    gap: 10px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 18.77px;
+    color: #213f7d;
+    margin: 0 0 40px 29px;
+
+    span {
+      width: 54px;
+      height: 19px;
+    }
+
+    img {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  .version {
+    font-size: 12px;
+    margin-left: 29px;
+    font-weight: 400;
+    line-height: 14.08px;
+    text-align: left;
   }
 }

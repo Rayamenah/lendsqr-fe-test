@@ -2,5 +2,14 @@
   display: flex;
   position: relative;
   max-width: 1440px;
+  height: 1574px;
   margin: auto;
+}
+
+.page-container {
+  margin-top: 100px;
+  overflow: auto;
+  font-family: Arial, Helvetica, sans-serif;
+  width: 1157px;
+  padding: 60px;
 }

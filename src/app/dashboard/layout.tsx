@@ -9,7 +9,9 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
         <div className='dashboard-layout'>
             <Sidebar />
             <Navbar />
-            {children}
+            <div className='page-container'>
+                {children}
+            </div>
         </div>
     )
 }

@@ -1,0 +1,162 @@
+.table-container {
+  width: 1037px;
+  height: 640px;
+  padding: 30px;
+  box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.1);
+  // overflow-y: auto;
+  overflow-x: hidden;
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+    height: 518px;
+
+    thead th,
+    tbody td {
+      &:nth-child(1) {
+        width: 116px;
+      }
+      &:nth-child(2) {
+        width: 106px;
+      }
+      &:nth-child(3) {
+        width: 147px;
+      }
+      &:nth-child(4) {
+        width: 124px;
+      }
+      &:nth-child(5) {
+        width: 154px;
+      }
+      &:nth-child(6) {
+        width: 100px;
+      }
+      &:nth-child(7) {
+        width: 20px;
+      }
+    }
+
+    th,
+    td {
+      text-align: left;
+      padding: 10px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    th {
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 14.08px;
+      text-transform: uppercase;
+
+      .filter-icon {
+        cursor: pointer;
+        margin-left: 5px;
+      }
+    }
+
+    td {
+      font-size: 14px;
+      height: 63px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      font-family: Work Sans;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 16.42px;
+      text-align: left;
+
+      &:nth-child(6) {
+        div {
+          width: fit-content;
+          height: 30px;
+          border-radius: 100px;
+          padding: 7px 13px;
+        }
+      }
+    }
+  }
+
+  tbody tr:last-child td {
+    border-bottom: none;
+  }
+
+  /* Media query for smaller screens */
+  @media (max-width: 768px) {
+    width: 100%; /* Make the container full-width */
+    padding: 15px;
+    overflow-x: auto; /* Enable horizontal scroll */
+
+    table {
+      min-width: 1037px; /* Ensure the table retains its full width */
+    }
+  }
+}
+
+.pagination {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 1037px;
+  height: 30px;
+
+  .page-count {
+    display: flex;
+    justify-content: space-between;
+    width: 227px;
+    height: 30px;
+
+    div {
+      width: 58px;
+      height: 16px;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 16.42px;
+      text-align: left;
+
+      &:nth-child(2) {
+        width: 69px;
+        height: 16px;
+      }
+    }
+
+    .page-number {
+      display: flex;
+      justify-content: space-between;
+      width: 58px;
+      height: 16px;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 16.42px;
+      text-align: left;
+
+      img {
+        width: 14px;
+        height: 14px;
+      }
+    }
+  }
+
+  .paginate-buttons {
+    button {
+      padding: 8px 12px;
+      border: none;
+      background-color: #890bff;
+      color: white;
+      cursor: pointer;
+      border-radius: 5px;
+
+      &:disabled {
+        background-color: #ddd;
+        cursor: not-allowed;
+      }
+    }
+  }
+
+  span {
+    font-size: 14px;
+  }
+}

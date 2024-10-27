@@ -4,7 +4,7 @@ import "../styles/navbar.scss"
 const Navbar = () => {
     return (
         <div className='navbar'>
-            <div className='logo'><img src='./auth-logo.svg' alt='' /></div>
+            <div className='logo'><img src='/auth-logo.svg' alt='' /></div>
 
             <div className='searchbox'>
                 <input type="text" placeholder='Search for anything' />
