@@ -1,27 +1,27 @@
 "use client"
 import React, { useState } from "react";
-import "../styles/table.scss"
+import "../styles/table.scss";
 import Pagination from "./pagination";
 import { users } from "@/utils/users.db";
 import { format } from "date-fns";
 import FilterComponent from "./filter";
 
 const Table = () => {
-
     const [sampleUsers, setSampleUsers] = useState(users);
     const [showFilter, setShowFilter] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
+    const [showModal, setShowModal] = useState<number | null>(null); // Track which user's action button was clicked
     const rowsPerPage = 9;
     const totalPages = Math.ceil(users.length / rowsPerPage);
 
     const handlePageChange = (page: number) => {
         setCurrentPage(page);
     };
+
     const currentUsers = users.slice(
         (currentPage - 1) * rowsPerPage,
         currentPage * rowsPerPage
     );
-
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const handleFilter = (filters: any) => {
@@ -37,7 +37,15 @@ const Table = () => {
         });
         setSampleUsers(filteredUsers);
         setShowFilter(false); // Hide filter after applying
-    }
+    };
+
+    const handleActionClick = (index: number) => {
+        setShowModal(index); // Show modal for the clicked user
+    };
+
+    const closeModal = () => {
+        setShowModal(null); // Close the modal
+    };
 
     return (
         <>
@@ -45,12 +53,12 @@ const Table = () => {
                 <table>
                     <thead>
                         <tr>
+                            {/* Table Headers */}
                             <th>
                                 <div className="table-heading">
                                     <span>Organization</span>
                                     <span><button onClick={() => setShowFilter(!showFilter)}><img src='/filter.svg' className="filter-icon" /></button></span>
                                 </div>
-
                             </th>
                             <th>
                                 <div className="table-heading">
@@ -82,9 +90,7 @@ const Table = () => {
                                     <span><button onClick={() => setShowFilter(!showFilter)}><img src='/filter.svg' className="filter-icon" /></button></span>
                                 </div>
                             </th>
-                            <th>
-
-                            </th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -100,7 +106,23 @@ const Table = () => {
                                         {user.status}
                                     </div>
                                 </td>
-                                <td><img src='/action_button.svg' /></td>
+                                <td>
+                                    <img
+                                        src='/action_button.svg'
+                                        onClick={() => handleActionClick(index)}
+                                        style={{ cursor: 'pointer' }}
+                                    />
+                                    {/* Show modal when an action button is clicked */}
+                                    {showModal === index && (
+                                        <div className="modal">
+                                            <ul>
+                                                <li onClick={closeModal}><img src='/view_details.svg' />View Details</li>
+                                                <li onClick={closeModal}><img src='/blacklist_user.svg' />Activate User</li>
+                                                <li onClick={closeModal}><img src='/activate_user.svg' />Blacklist User</li>
+                                            </ul>
+                                        </div>
+                                    )}
+                                </td>
                             </tr>
                         ))}
                     </tbody>
@@ -108,10 +130,7 @@ const Table = () => {
                 {showFilter && (
                     <FilterComponent onFilter={handleFilter} onClose={() => setShowFilter(false)} />
                 )}
-
-            </div >
-
-
+            </div>
 
             <div className="pagination">
                 <div className="page-count">
@@ -128,7 +147,6 @@ const Table = () => {
                     totalPages={totalPages}
                     onPageChange={handlePageChange}
                 />
-
             </div>
         </>
     );

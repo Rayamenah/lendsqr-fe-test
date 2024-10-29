@@ -31,7 +31,7 @@
       padding: 11px;
 
       &:nth-child(1) {
-        background-color: #df18ff;
+        // background-color: #df18ff;
         border-radius: 50%;
       }
       &:nth-child(2) {
@@ -85,5 +85,26 @@
     grid-template-columns: auto auto auto;
     column-gap: 5px;
     place-items: center;
+  }
+  @media (max-width: 425px) {
+    display: grid;
+    grid-template-columns: auto auto;
+    column-gap: 5px;
+    place-items: center;
+
+    .user-card {
+      // display: flex;
+      padding: 10px 15px;
+      width: 150px;
+      height: 100px;
+
+      .user-icon {
+        display: none;
+      }
+
+      .user-title {
+        font-size: 10px;
+      }
+    }
   }
 }

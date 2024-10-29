@@ -8,7 +8,7 @@
 
   @media (max-width: 768px) {
     transform: translateX(-100%); // Start hidden
-    position: fixed;
+    position: absolute;
     z-index: 1; // Fix the sidebar
     background-color: white;
   }

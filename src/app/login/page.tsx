@@ -19,22 +19,34 @@ const Login = () => {
     const router = useRouter()
 
     const handleSubmit = (e: FormEvent) => {
-        e.preventDefault()
+        e.preventDefault();
         try {
-            if (!login.email || !login.password) setError("invalid email or password")
-            setError('')
-            setLoading(true)
-            const user = users.find(u => u.email === login.email)
-            setLoading(false)
-            console.log(user)
-            if (user) router.push('/dashboard/users')
+            if (!login.email || !login.password) {
+                setError("Invalid email or password");
+                return;
+            }
+            setError('');
+            setLoading(true);
+
+            const user = users.find(u => u.email === login.email);
+
+            if (!user) {
+                setError("Invalid user");
+                setLoading(false);
+                return;
+            }
+
+            localStorage.setItem('user', JSON.stringify(user));
+            setLoading(false);
+            console.log(user);
+            if (user) router.push('/dashboard/users');
+
         } catch (err) {
-            setLoading(false)
-            console.log(err)
+            setLoading(false);
+            console.log(err);
         }
-
-
     }
+
 
 
     return (
@@ -60,7 +72,7 @@ const Login = () => {
                         onChange={(e) => setLogin((prev) => ({ ...prev, password: e.target.value }))}
                         autoComplete='false'
                     />
-                    {error && <span>{error}</span>}
+                    {error && <p className='error-message'>{error}</p>}
                     <button
                         type="button"
                         onClick={togglePasswordVisibility}
