@@ -1,10 +1,23 @@
 .container {
   width: 283px;
-  height: 1574px;
+  height: 100%; // Change height for full view
   box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.1);
+  left: 0;
+  top: 0;
+  transition: transform 0.3s ease;
+
+  @media (max-width: 768px) {
+    transform: translateX(-100%); // Start hidden
+    position: fixed;
+    z-index: 1; // Fix the sidebar
+    background-color: white;
+  }
+
+  &.open {
+    transform: translateX(0); // Slide in
+  }
 
   .nav-container {
-    z-index: 5;
     border-bottom: 1px solid #213f7d;
   }
 
@@ -42,7 +55,6 @@
       font-weight: 400;
       line-height: 18.77px;
       color: #213f7d;
-      font-family: sans-serif;
       margin-right: 23px;
     }
   }
@@ -68,13 +80,11 @@
       font-weight: 400;
       line-height: 18.77px;
       color: #213f7d;
-      font-family: sans-serif;
     }
   }
 
   .nav-menu {
     margin: 41px 0 59px;
-    font-family: sans-serif;
 
     .nav-submenu {
       .nav-heading {
@@ -85,7 +95,6 @@
         font-weight: 500;
         line-height: 14.08px;
         color: #545f7d;
-        font-family: sans-serif;
       }
 
       .nav-title {

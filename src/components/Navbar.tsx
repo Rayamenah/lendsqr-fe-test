@@ -1,9 +1,12 @@
 import React from 'react'
 import "../styles/navbar.scss"
 
-const Navbar = () => {
+const Navbar = ({ toggleDrawer, isOpen }: { isOpen: boolean, toggleDrawer: () => void }) => {
     return (
         <div className='navbar'>
+            <button className="toggle-button" onClick={toggleDrawer}>
+                {isOpen ? 'X' : 'Menu'}
+            </button>
             <div className='logo'><img src='/auth-logo.svg' alt='' /></div>
 
             <div className='searchbox'>

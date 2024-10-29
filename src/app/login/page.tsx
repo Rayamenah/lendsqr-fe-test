@@ -1,14 +1,42 @@
 "use client"
 
-import React, { useState } from 'react'
-import "../../styles/auth.scss"
-import Image from 'next/image'
+import { users } from '@/utils/users.db'
 import Link from 'next/link'
-type Props = {}
+import { useRouter } from 'next/navigation'
+import { FormEvent, useState } from 'react'
+import "../../styles/auth.scss"
 
-const Login = (props: Props) => {
+const Login = () => {
+    const [login, setLogin] = useState({
+        email: '',
+        password: '',
+    })
     const [showPassword, setShowPassword] = useState(false)
+    const [loading, setLoading] = useState(false)
+    const [error, setError] = useState('')
     const togglePasswordVisibility = () => { setShowPassword(!showPassword) }
+
+    const router = useRouter()
+
+    const handleSubmit = (e: FormEvent) => {
+        e.preventDefault()
+        try {
+            if (!login.email || !login.password) setError("invalid email or password")
+            setError('')
+            setLoading(true)
+            const user = users.find(u => u.email === login.email)
+            setLoading(false)
+            console.log(user)
+            if (user) router.push('/dashboard/users')
+        } catch (err) {
+            setLoading(false)
+            console.log(err)
+        }
+
+
+    }
+
+
     return (
         <section style={{ display: "flex" }} className='auth_container'>
             <div className='auth-image-container'>
@@ -20,16 +48,19 @@ const Login = (props: Props) => {
                 {/* <form className='login-form'> */}
                 <p className='welcome-text'>Welcome!</p>
                 <p className='welcome-description'>Enter details to login.</p>
-                <div className='form-input'>
+                <form onSubmit={handleSubmit} className='form-input'>
                     <input
+                        onChange={(e) => setLogin((prev) => ({ ...prev, email: e.target.value }))}
                         placeholder='Email'
                         type='email'
                     />
                     <input
                         placeholder='Password'
                         type={showPassword ? 'text' : 'password'}
+                        onChange={(e) => setLogin((prev) => ({ ...prev, password: e.target.value }))}
                         autoComplete='false'
                     />
+                    {error && <span>{error}</span>}
                     <button
                         type="button"
                         onClick={togglePasswordVisibility}
@@ -41,12 +72,11 @@ const Login = (props: Props) => {
                             "SHOW"
                         )}
                     </button>
-                </div>
 
 
-                <Link href="/" className='forgot-password'>FORGOT PASSWORD?</Link>
-                <button type='submit' className='submit'>LOG IN</button>
-                {/* </form> */}
+                    <Link href="/" className='forgot-password'>FORGOT PASSWORD?</Link>
+                    <button type='submit' className='submit'>{loading ? "Loading" : 'LOG IN'}</button>
+                </form>
             </div>
         </section>
     )

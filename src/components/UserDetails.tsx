@@ -1,16 +1,20 @@
-import React from 'react'
-import "../styles/userDetails.scss"
+"use client"
 import { education, guarantors, information, socials } from '@/utils/userDetails'
+import { users } from '@/utils/users.db'
 import Link from 'next/link'
+import "../styles/userDetails.scss"
 
 const UserDetails = () => {
+    const user = users.find(u => u.email === 'wallsmcfadden@inventure.com')
+    if (!user) return null
+
     return (
         <>
             <Link href='/dashboard/users' className='go-back'>
                 <img className='back-arrow' src='/back_arrow.svg' />
                 <span>back to user</span>
-                s</Link>
-            <div className='heading'>
+            </Link>
+            <div className='user-heading'>
                 <div className='user-details'>User Details</div>
                 <div className='blacklist'>BLACKLIST USER</div>
                 <div className='activate'>ACTIVATE USER</div>

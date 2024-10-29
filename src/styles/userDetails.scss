@@ -43,26 +43,39 @@ $gray: #545f7d;
   }
 }
 
-.heading {
+.user-heading {
   display: flex;
-}
 
-.user-details {
-  @include text-styles($font-primary, 24px, 28.15px, 500);
-  color: $color-primary;
-}
+  // @media (max-width: 768px) {
+  //   width: 100%;
+  //   gap: 10px;
+  // }
 
-.blacklist {
-  @include button-styles($red, $red);
-  // display: flex;
-  // align-items: center;
-  text-align: center;
-  margin-left: 534px;
-}
+  .user-details {
+    @include text-styles($font-primary, 24px, 28.15px, 500);
+    color: $color-primary;
 
-.activate {
-  @include button-styles($teal, $teal);
-  margin-left: 20px;
+    // @media (max-width: 768px) {
+    //   width: fit-content;
+    // }
+  }
+
+  .blacklist {
+    @include button-styles($red, $red);
+    // display: flex;
+    // align-items: center;
+    text-align: center;
+    margin-left: 534px;
+
+    // @media (max-width: 768px) {
+    //   margin-left: 0;
+    // }
+  }
+
+  .activate {
+    @include button-styles($teal, $teal);
+    margin-left: 20px;
+  }
 }
 
 .user-info-container {
@@ -79,6 +92,10 @@ $gray: #545f7d;
   height: 100px;
   display: flex;
   align-items: center;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 
   .image {
     width: 100px;
@@ -187,6 +204,21 @@ $gray: #545f7d;
     height: 19px;
     margin-right: 0px;
   }
+
+  @media (max-width: 768px) {
+    width: 100%;
+    display: flex;
+    text-wrap: wrap;
+
+    .gen-details {
+      margin-right: 10px;
+      font-size: 12px;
+    }
+    span {
+      font-size: 12px;
+      margin-right: 10px;
+    }
+  }
 }
 
 .detailed-information {
@@ -195,25 +227,34 @@ $gray: #545f7d;
   box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.1);
   height: 910px;
 
+  @media (max-width: 768px) {
+    height: fit-content;
+  }
+
   .heading {
     @include text-styles($font-primary, 16px, 18.77px, 500);
     color: $color-primary;
     margin-bottom: 30px;
   }
-
   .personal-info {
     display: flex;
     flex-wrap: wrap;
 
+    @media (max-width: 768px) {
+      display: block;
+    }
+
     .info-container {
       margin-bottom: 30px;
       color: #545f7d;
+
       .title {
         font-size: 12px;
         font-weight: 400;
         line-height: 14.08px;
         text-align: left;
       }
+
       .value {
         font-size: 16px;
         font-weight: 500;
@@ -245,9 +286,9 @@ $gray: #545f7d;
       }
 
       &:nth-child(5) {
-        margin-left: 100px;
         width: 57px;
         height: 41px;
+        margin-left: 100px;
       }
 
       &:nth-child(6) {
@@ -266,6 +307,12 @@ $gray: #545f7d;
         height: 41px;
         margin-left: 145px;
       }
+
+      // Full width on smaller screens
+      @media (max-width: 768px) {
+        width: 100% !important;
+        margin-left: 0 !important;
+      }
     }
   }
 
@@ -273,8 +320,13 @@ $gray: #545f7d;
     display: flex;
     flex-wrap: wrap;
 
+    @media (max-width: 768px) {
+      display: block;
+    }
+
     .info-container {
       color: #545f7d;
+      // margin-bottom: 30px;
 
       .title {
         font-size: 12px;
@@ -328,12 +380,22 @@ $gray: #545f7d;
         height: 43px;
         margin-left: 74px;
       }
+
+      // Full width on smaller screens
+      @media (max-width: 768px) {
+        width: 100% !important;
+        margin-left: 0 !important;
+      }
     }
   }
 
   .socials {
     display: flex;
     flex-wrap: wrap;
+
+    @media (max-width: 768px) {
+      display: block;
+    }
 
     .info-container {
       color: #545f7d;
@@ -368,12 +430,22 @@ $gray: #545f7d;
         height: 41px;
         margin-left: 103px;
       }
+
+      // Full width on smaller screens
+      @media (max-width: 768px) {
+        width: 100% !important;
+        margin-left: 0 !important;
+      }
     }
   }
 
   .guarantor {
     display: flex;
     flex-wrap: wrap;
+
+    @media (max-width: 768px) {
+      display: block;
+    }
 
     .info-container {
       color: #545f7d;
@@ -413,12 +485,22 @@ $gray: #545f7d;
         height: 41px;
         margin-left: 97px;
       }
+
+      // Full width on smaller screens
+      @media (max-width: 768px) {
+        width: 100% !important;
+        margin-left: 0 !important;
+      }
     }
   }
 
   .extra {
     display: flex;
     flex-wrap: wrap;
+
+    @media (max-width: 768px) {
+      display: block;
+    }
 
     .info-container {
       color: #545f7d;
@@ -458,6 +540,11 @@ $gray: #545f7d;
         height: 41px;
         margin-left: 97px;
       }
+
+      @media (max-width: 768px) {
+        width: 100% !important;
+        margin-left: 0 !important;
+      }
     }
   }
 
@@ -466,5 +553,11 @@ $gray: #545f7d;
     height: 1px;
     background-color: $color-primary;
     margin-bottom: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .heading {
+    width: 100%;
   }
 }

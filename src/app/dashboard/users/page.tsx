@@ -42,8 +42,8 @@ const Page = () => {
                 ))}
             </div>
 
-
             <Table />
+
         </>)
 }
 

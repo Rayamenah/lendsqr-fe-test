@@ -1,11 +1,14 @@
-import { business, customers, settings } from '@/utils/navigation'
-import "../styles/sidebar.scss"
+"use client"
 
-const Sidebar = () => {
+import { business, customers, settings } from '@/utils/navigation';
+import "../styles/sidebar.scss";
+
+const Sidebar = ({ isOpen }: { isOpen: boolean }) => {
+
     return (
-        <div className='container'>
+        <div className={`container ${isOpen ? 'open' : ''}`}>
             <div className='nav-container'>
-                <div className='logo'><img src='./auth-logo.svg' alt='' /></div>
+                <div className='logo'></div>
                 <section>
                     <div className='nav-header'>
                         <div className='switch-org'>
@@ -42,10 +45,8 @@ const Sidebar = () => {
                                 ))}
                             </div>
                         </div>
-
                     </div>
                 </section>
-
             </div>
             <div className='sidebar-footer'>
                 <img src='/logout.svg' />
@@ -53,7 +54,7 @@ const Sidebar = () => {
             </div>
             <div className='version'>v1.20</div>
         </div>
-    )
-}
+    );
+};
 
-export default Sidebar
+export default Sidebar;
